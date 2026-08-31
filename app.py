@@ -8,6 +8,11 @@ def home():
 
    return render_template("index.html")
 
+@app.route("/tickets")
+def tickets():
+    
+    return render_template("tickets.html")
+
   
 
 if __name__ == "__main__":
