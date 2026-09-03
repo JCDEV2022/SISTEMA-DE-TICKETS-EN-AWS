@@ -1,48 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickets</title>
+
+    <title>Sistema de Tickets</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tickets.css') }}">
 </head>
+
 <body>
 
-    <h1>Listado de Tickets</h1>
+    <main class="container">
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Técnico</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
+        <div class="page-header">
 
-        <tbody>
-            {% for ticket in tickets %}
-            <tr>
-                <td>{{ ticket.id }}</td>
-                <td>{{ ticket.titulo }}</td>
-                <td>{{ ticket.tecnico }}</td>
-                <td>{{ ticket.estado }}</td>
+            <div>
+                <h1>Listado de Tickets</h1>
+                <p>Gestión y seguimiento de solicitudes de soporte</p>
+            </div>
 
-                <td>
-    <a href="/editar-ticket/{{ticket.id}}">Editar</a>
+            <a href="/crear-ticket" class="btn-new">
+                + Nuevo Ticket
+            </a>
 
-    <form action="/eliminar-ticket/{{ticket.id}}" method="POST" style="display:inline;">
-        <button type="submit" onclick="return confirm('¿Está seguro de eliminar este ticket?')">
-            Eliminar
-        </button>
-    </form>
-</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+        </div>
 
-    </table>
+        <div class="table-card">
+
+            <table class="ticket-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Técnico</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for ticket in tickets %}
+
+                    <tr>
+
+                        <td>{{ ticket.id }}</td>
+
+                        <td>{{ ticket.titulo }}</td>
+
+                        <td>{{ ticket.tecnico }}</td>
+
+                        <td>
+
+                            {% if ticket.estado == "pendiente" %}
+
+                                <span class="status status-pendiente">
+                                    Pendiente
+                                </span>
+
+                            {% elif ticket.estado == "resuelto" %}
+
+                                <span class="status status-resuelto">
+                                    Resuelto
+                                </span>
+
+                            {% else %}
+
+                                <span class="status">
+                                    {{ ticket.estado }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <div class="actions">
+
+                                <a
+                                    href="/editar-ticket/{{ ticket.id }}"
+                                    class="btn-edit"
+                                >
+                                    Editar
+                                </a>
+
+                                <form
+                                    action="/eliminar-ticket/{{ ticket.id }}"
+                                    method="POST"
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="btn-delete"
+                                        onclick="return confirm('¿Está seguro de eliminar este ticket?')"
+                                    >
+                                        Eliminar
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
 
 </body>
+
 </html>
-
-

@@ -1,0 +1,175 @@
+/* ================================
+   SISTEMA DE TICKETS
+   Estilos profesionales
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Encabezado */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    color: #111827;
+}
+
+.page-header p {
+    margin-top: 6px;
+    color: #6b7280;
+}
+
+/* Botón nuevo ticket */
+
+.btn-new {
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 7px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-new:hover {
+    background: #1d4ed8;
+}
+
+/* Tarjeta de la tabla */
+
+.table-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Tabla */
+
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticket-table thead {
+    background: #111827;
+    color: white;
+}
+
+.ticket-table th {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.ticket-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.ticket-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Estado */
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-pendiente {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-resuelto {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Acciones */
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-edit {
+    background: #f59e0b;
+    color: white;
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.btn-edit:hover {
+    background: #d97706;
+}
+
+.btn-delete {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #b91c1c;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    .ticket-table {
+        min-width: 700px;
+    }
+}
