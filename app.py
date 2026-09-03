@@ -16,7 +16,7 @@ lista_tickets = [
         "estado": "resuelto"
     }
 ]
-
+siguiente_id = 3
 
 @app.route("/")
 def home():
@@ -26,6 +26,8 @@ def home():
 
 @app.route("/crear-ticket", methods=["GET", "POST"])
 def crear_ticket():
+
+    global siguiente_id
 
     if request.method == "POST":
 
@@ -50,13 +52,14 @@ def crear_ticket():
         
 
         nuevo_ticket = {
-            "id": len(lista_tickets) + 1,
-            "titulo": titulo,
-            "tecnico": tecnico,
-            "estado": estado
-        }
+    "id": siguiente_id,
+    "titulo": titulo,
+    "tecnico": tecnico,
+    "estado": estado
+}
 
         lista_tickets.append(nuevo_ticket)
+        siguiente_id += 1
 
         return redirect("/tickets")
 
