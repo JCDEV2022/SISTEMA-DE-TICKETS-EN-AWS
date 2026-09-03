@@ -1,32 +1,249 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sistema de Tickets</title>
-    </head>
-    <body>
-        <h1>Sistema de Gestion de Tickets</h1>
-    <p>Esta aplicacion nos va a permitir tener el control de los tickets atendidos por un tecnico de soporte</p>
-    <nav>
-        <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/tickets">Tickets</a></li>
-            <li><a href="/crear-ticket">Crear Ticket</a></li>
-            <li><a href="#">Reportes</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>Tickets</h2>
-        <p>25</p>
-    </section>
-    <section>
-        <h2>Pendientes</h2>
-        <p>8</p>
-    </section>
-    <section>
-        <h2>Resueltos</h2>
-        <p>17</p>
-    </section>
-    </body>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+
+    <!-- Navegación -->
+
+    <header class="navbar">
+
+        <div class="navbar-container">
+
+            <div class="logo">
+                Sistema de Tickets
+            </div>
+
+            <nav>
+
+                <a href="/" class="active">
+                    Inicio
+                </a>
+
+                <a href="/tickets">
+                    Tickets
+                </a>
+
+                <a href="/crear-ticket">
+                    Crear Ticket
+                </a>
+
+                <a href="#">
+                    Reportes
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- Contenido principal -->
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    Sistema de soporte técnico
+                </span>
+
+                <h1>
+                    Gestión de Tickets
+                    <span>de Soporte</span>
+                </h1>
+
+                <p>
+                    Administra, consulta y realiza seguimiento
+                    a las solicitudes de soporte técnico de manera
+                    sencilla y organizada.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="/tickets" class="btn-primary">
+                        Ver Tickets
+                    </a>
+
+                    <a href="/crear-ticket" class="btn-secondary">
+                        Crear Ticket
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Estadísticas -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🎫
+                </div>
+
+                <div>
+                    <p class="stat-title">
+                        Total de Tickets
+                    </p>
+
+                    <h2>
+                        25
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon pending">
+                    ⏳
+                </div>
+
+                <div>
+                    <p class="stat-title">
+                        Pendientes
+                    </p>
+
+                    <h2>
+                        8
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon resolved">
+                    ✓
+                </div>
+
+                <div>
+                    <p class="stat-title">
+                        Resueltos
+                    </p>
+
+                    <h2>
+                        17
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Accesos rápidos -->
+
+        <section class="quick-access">
+
+            <h2>
+                Accesos rápidos
+            </h2>
+
+            <div class="quick-grid">
+
+                <a href="/tickets" class="quick-card">
+
+                    <div class="quick-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Consultar Tickets
+                        </h3>
+
+                        <p>
+                            Consulta y administra los tickets registrados.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a href="/crear-ticket" class="quick-card">
+
+                    <div class="quick-icon">
+                        ➕
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Nuevo Ticket
+                        </h3>
+
+                        <p>
+                            Registra una nueva solicitud de soporte.
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="quick-card">
+
+                    <div class="quick-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Reportes
+                        </h3>
+
+                        <p>
+                            Consulta información y estadísticas del sistema.
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Pie de página -->
+
+    <footer>
+
+        <p>
+            Sistema de Tickets © 2026
+        </p>
+
+        <p>
+            Aplicación desarrollada con Flask y AWS
+        </p>
+
+    </footer>
+
+</body>
+
 </html>
