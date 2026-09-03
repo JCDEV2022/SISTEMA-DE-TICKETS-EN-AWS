@@ -1,17 +1,42 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Tickets</title>
+    <title>Tickets</title>
 </head>
 <body>
 
-    <h1>Sistema de Tickets</h1>
+    <h1>Listado de Tickets</h1>
 
-    <p>Bienvenido al módulo de tickets.</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Técnico</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.titulo }}</td>
+                <td>{{ ticket.tecnico }}</td>
+                <td>{{ ticket.estado }}</td>
+
+                <td>
+                <a href="/editar-ticket/{{ticket.id}}">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
 
 </body>
 </html>
-```
+
+
