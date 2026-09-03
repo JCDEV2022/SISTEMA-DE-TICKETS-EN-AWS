@@ -1,43 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Crear Ticket</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crear_ticket.css') }}">
 </head>
+
 <body>
 
-    <h1>Crear Ticket</h1>
-    
-        {% if mensaje %}
-          <p>{{ mensaje }}</p>
-         {% endif %}
+    <main class="container">
 
+        <div class="page-header">
 
-    <form method="POST" action="/crear-ticket">
+            <div>
+                <h1>Crear Ticket</h1>
+                <p>Registra una nueva solicitud de soporte</p>
+            </div>
 
-        <label for="titulo">Título del ticket:</label>
-        <br>
-        <input type="text" id="titulo" name="titulo">
-        <br><br>
+            <a href="/tickets" class="btn-back">
+                ← Volver a Tickets
+            </a>
 
-        <label for="tecnico">Técnico:</label>
-        <br>
-        <input type="text" id="tecnico" name="tecnico">
-        <br><br>
+        </div>
 
-        <label for="estado">Estado:</label>
-        <br>
-        <select id="estado" name="estado">
-            <option value="pendiente">Pendiente</option>
-            <option value="resuelto">Resuelto</option>
-        </select>
-        <br><br>
+        <div class="form-card">
 
-        <button type="submit">Crear Ticket</button>
+            {% if mensaje %}
+                <div class="message">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
 
-    </form>
+            <form method="POST" action="/crear-ticket">
+
+                <div class="form-group">
+
+                    <label for="titulo">
+                        Título del ticket
+                    </label>
+
+                    <input
+                        type="text"
+                        id="titulo"
+                        name="titulo"
+                        placeholder="Ej: Equipo no enciende"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="tecnico">
+                        Técnico
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tecnico"
+                        name="tecnico"
+                        placeholder="Nombre del técnico"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="estado">
+                        Estado
+                    </label>
+
+                    <select id="estado" name="estado">
+
+                        <option value="pendiente">
+                            Pendiente
+                        </option>
+
+                        <option value="resuelto">
+                            Resuelto
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <a href="/tickets" class="btn-cancel">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn-submit">
+                        Crear Ticket
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
 
 </body>
+
 </html>
 

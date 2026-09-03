@@ -1,70 +1,119 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Editar Ticket</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editar_ticket.css') }}">
 </head>
+
 <body>
 
+    <main class="container">
 
-<h1>Editar Ticket</h1>
+        <div class="page-header">
 
-{% if mensaje %}
-    <p>{{ mensaje }}</p>
-{% endif %}
+            <div>
+                <h1>Editar Ticket</h1>
+                <p>Actualiza la información de la solicitud</p>
+            </div>
 
-<form method="POST">
+            <a href="/tickets" class="btn-back">
+                ← Volver a Tickets
+            </a>
 
-    <label>Título:</label>
-    <input
-        type="text"
-        name="titulo"
-        value="{{ ticket.titulo }}"
-    >
+        </div>
 
-    <br><br>
+        <div class="form-card">
 
-    <label>Técnico:</label>
-    <input
-        type="text"
-        name="tecnico"
-        value="{{ ticket.tecnico }}"
-    >
+            {% if mensaje %}
+                <div class="message">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
 
-    <br><br>
+            <form method="POST">
 
-    <label>Estado:</label>
+                <div class="form-group">
 
-    <select name="estado">
+                    <label for="titulo">
+                        Título del ticket
+                    </label>
 
-        <option value="pendiente"
-            {% if ticket.estado == "pendiente" %}selected{% endif %}>
-            Pendiente
-        </option>
+                    <input
+                        type="text"
+                        id="titulo"
+                        name="titulo"
+                        value="{{ ticket.titulo }}"
+                        required
+                    >
 
-        <option value="en proceso"
-            {% if ticket.estado == "en proceso" %}selected{% endif %}>
-            En proceso
-        </option>
+                </div>
 
-        <option value="resuelto"
-            {% if ticket.estado == "resuelto" %}selected{% endif %}>
-            Resuelto
-        </option>
+                <div class="form-group">
 
-    </select>
+                    <label for="tecnico">
+                        Técnico
+                    </label>
 
-    <br><br>
+                    <input
+                        type="text"
+                        id="tecnico"
+                        name="tecnico"
+                        value="{{ ticket.tecnico }}"
+                        required
+                    >
 
-    <button type="submit">Guardar cambios</button>
+                </div>
 
-</form>
+                <div class="form-group">
 
-<br>
+                    <label for="estado">
+                        Estado
+                    </label>
 
-<a href="/tickets">Volver a tickets</a>
+                    <select id="estado" name="estado">
 
+                        <option value="pendiente"
+                            {% if ticket.estado == "pendiente" %}selected{% endif %}>
+                            Pendiente
+                        </option>
+
+                        <option value="en proceso"
+                            {% if ticket.estado == "en proceso" %}selected{% endif %}>
+                            En proceso
+                        </option>
+
+                        <option value="resuelto"
+                            {% if ticket.estado == "resuelto" %}selected{% endif %}>
+                            Resuelto
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <a href="/tickets" class="btn-cancel">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn-submit">
+                        Guardar cambios
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
 
 </body>
+
 </html>
