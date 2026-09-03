@@ -28,8 +28,14 @@
                 <td>{{ ticket.estado }}</td>
 
                 <td>
-                <a href="/editar-ticket/{{ticket.id}}">Editar</a>
-                </td>
+    <a href="/editar-ticket/{{ticket.id}}">Editar</a>
+
+    <form action="/eliminar-ticket/{{ticket.id}}" method="POST" style="display:inline;">
+        <button type="submit" onclick="return confirm('¿Está seguro de eliminar este ticket?')">
+            Eliminar
+        </button>
+    </form>
+</td>
             </tr>
             {% endfor %}
         </tbody>

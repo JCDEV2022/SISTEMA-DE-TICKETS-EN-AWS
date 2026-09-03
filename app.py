@@ -114,6 +114,18 @@ def editar_ticket(id):
 
     return render_template("editar_ticket.html", ticket=ticket)
 
+@app.route("/eliminar-ticket/<int:id>", methods =["POST"])
+def eliminar_ticket(id):
+
+    ticket = next((t for t in lista_tickets if t["id"]== id),None)
+
+    if ticket is None:
+        return "ticket no encontrado", 404
+    
+    lista_tickets.remove(ticket)
+
+    return redirect("/tickets")
+
     
 if __name__ == "__main__":
     app.run(debug=True)
