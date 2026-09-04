@@ -1,6 +1,17 @@
 from flask import Flask, render_template, request, redirect
+import os
+import pymysql
 
 app = Flask(__name__)
+
+def obtener_conexion():
+    return pymysql.connect(
+        host=os.environ["DB_HOST"],
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        database=os.environ["DB_NAME"],
+        port=int(os.environ.get("DB_PORT", 3306))
+    )
 
 lista_tickets = [
     {
@@ -69,7 +80,17 @@ def crear_ticket():
 @app.route("/tickets")
 def tickets():
 
-    return render_template("tickets.html", tickets=lista_tickets)
+    conexion = obtener_conexion()
+
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT * FROM tickets ORDER BY id")
+            tickets = cursor.fetchall()
+
+        return render_template("tickets.html", tickets=tickets)
+
+    finally:
+        conexion.close()
 
 @app.route("/editar-ticket/<int:id>", methods=["GET", "POST"])
 def editar_ticket(id):
